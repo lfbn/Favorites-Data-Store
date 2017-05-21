@@ -1,6 +1,6 @@
-# User Favorites Data Store
+# Favorites Data Store
 
-It is a data store that, unsing MongoDB, persistently stores and manages user favorites, be it an ID, or a URL. It also acts as a cache, if the favorite already exists in the instance, for faster access.
+It is a data store that, using MongoDB, persistently stores and manages user favorites, be it an ID, or a URL. It also acts as a cache, if the favorite already exists in the instance, for faster access.
 
 ## Usage Examples
 
