@@ -4,17 +4,33 @@ namespace FDS\helper;
 
 class DataValidationHelper {
 
-    public static function validatePositiveInteger($int)
+    /**
+     * Checks if the value is a positive integer
+     *
+     * @param int $value
+     *
+     * @return boolean
+     */
+    public static function validatePositiveInteger($value)
     {
-        if(!is_int($int) || $int < 1) {
+        if(!is_int($value) || $value < 1) {
             return false;
         }
         return true;
     }
 
-    public static function validateUrl($url)
+    /**
+     * Checks if the value is a valid URL
+     *
+     * @param string $value
+     *
+     * @return boolean
+     *
+     * @link http://php.net/manual/en/filter.filters.validate.php
+     */
+    public static function validateUrl($value)
     {
-        if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+        if (filter_var($value, FILTER_VALIDATE_URL) === false) {
             return false;
         }
         return true;

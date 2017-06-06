@@ -3,25 +3,40 @@
 namespace FDS;
 
 use FDS\Model\BaseFavoriteModel;
-use FDS\Database;
 
 class FavoritesDataStore {
 
+    /**
+     * @var Database
+     */
     private $database;
 
+    /**
+     * @var array
+     */
     private $data;
-    
+
+    /**
+     * @param Database $database
+     */
     public function __construct(Database $database)
     {
         $this->database = $database;
     }
 
-    public function set(BaseFavoriteModel $favorite) 
+    /**
+     * @param BaseFavoriteModel $favorite
+     */
+    public function set(BaseFavoriteModel $favorite)
     {
         $this->data[$favorite->ownerId][] = $favorite;
         $this->database->insert((array)$favorite);
     }
 
+    /**
+     * @param int $ownerId
+     * @return BaseFavoriteModel[]
+     */
     public function get($ownerId)
     {
         if (isset($this->data[$ownerId])) {
@@ -39,13 +54,18 @@ class FavoritesDataStore {
                 $document["data"]
             );
         }
-        
+
         return $instances ? $instances : false;
     }
 
+    /**
+     * @param int $ownerId
+     * @return boolean
+     */
     public function remove($ownerId)
     {
         unset($this->data[$ownerId]);
         $this->database->remove(array("ownerId" => $ownerId));
+        return true;
     }
 }

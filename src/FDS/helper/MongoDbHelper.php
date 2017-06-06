@@ -4,9 +4,24 @@ namespace FDS\helper;
 
 class MongoDbHelper {
 
-    public static function buildConnectionString($username, $password, $host, $port, $database)
+    /**
+     * Builds a connection string to connect to a MongoDB instance.
+     *
+     * @param string $host
+     * @param int $port
+     * @param string $database
+     * @param string $username
+     * @param string $password
+     * 
+     * @return string
+     */
+    public static function buildConnectionString($host, $port, $database, $username = null, $password = null)
     {
-        if ($username && $password) {
+        if (!is_int($port)) {
+            throw new \InvalidArgumentException('The port provided should be an integer');
+        }
+
+        if (is_null($username) && is_null($password)) {
             $usernameAndPassConString = sprintf(
                 '%s:%s@',
                 $username,

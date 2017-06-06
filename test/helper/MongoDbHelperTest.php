@@ -9,12 +9,12 @@ class MongoDbHelperTest extends TestCase
     public function testWithUsernamePassEmpty()
     {
         $this->assertEquals(
-            MongoDbHelper::buildConnectionString(
-                '',
-                '',
+            MongoDbHelper::buildConnectionString(                
                 '127.0.0.1',
                 80,
-                'db'
+                'db',
+                '',
+                ''
             ),
             'mongodb://127.0.0.1:80/db'
         );       
@@ -23,12 +23,12 @@ class MongoDbHelperTest extends TestCase
     public function testWithAllDataProvided()
     {
         $this->assertEquals(
-            MongoDbHelper::buildConnectionString(
-                'user',
-                'pass',
+            MongoDbHelper::buildConnectionString(                
                 'localhost',
                 90,
-                'database'
+                'database',
+                'user',
+                'pass'
             ),
             'mongodb://user:pass@localhost:90/database'
         );       
