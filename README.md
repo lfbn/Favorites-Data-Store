@@ -40,3 +40,7 @@ Deleting all records of a owner.
 // Deletes all the records of a owner
 $favoritesDataStore->remove(1);
 ```
+
+## Running unit tests
+
+Simply, after ```composer install``` run ```composer test```.
