@@ -4,13 +4,15 @@
     "description": "Library that allows to save and manage user favourites data",
     "keywords": ["nosql", "datastore"],
     "homepage": "https://github.com/lfbn/favorites-data-store",
-    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Luís Nóbrega",
             "email": "luis.barros.nobrega@gmail.com"
         }
     ],
+    "scripts": {
+        "test": "phpunit"
+    },
     "require": {
         "php": "~7.1",
         "phpunit/phpunit": "~6.1"

@@ -21,7 +21,7 @@ class MongoDbHelper {
             throw new \InvalidArgumentException('The port provided should be an integer');
         }
 
-        if (is_null($username) && is_null($password)) {
+        if (!empty($username) && !empty($password)) {
             $usernameAndPassConString = sprintf(
                 '%s:%s@',
                 $username,
